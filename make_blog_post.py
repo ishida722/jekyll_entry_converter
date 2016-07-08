@@ -1,5 +1,11 @@
-def __init__(self, text):
+import datetime
+
+def make_blog_post(text):
+    text = str(text)
     title = text[0:text.find('\n')]
+    body = text[text.find('\n'):]
+    matter = str(front_matter(title))
+    post = matter + body
     return post
 
 class front_matter:
@@ -7,7 +13,8 @@ class front_matter:
         self.title = self.title + post_title
 
     def set_date(self):
-        nowtime = '{}-{}-{}-'.format()
+        time = datetime.datetime.today()
+        nowtime = time.isoformat() + ' +0900'
         self.date = self.date + nowtime
 
     def make_matter(self):
@@ -21,7 +28,7 @@ class front_matter:
 
         self.set_title(post_title)
         self.set_date()
-        make_matter()
+        self.make_matter()
 
+    def __str__(self):
         return self.matter
-
