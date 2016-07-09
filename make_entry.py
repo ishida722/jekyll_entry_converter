@@ -14,17 +14,18 @@ class front_matter:
 
     def set_date(self):
         time = datetime.datetime.today()
-        nowtime = time.isoformat() + ' +0900'
+        nowtime = time.strftime('%Y-%m-%d %H:%M:%S +0900')
         self.date = self.date + nowtime
 
     def make_matter(self):
-        self.matter = self.line + '\n' + self.title + '\n' + self.pub + '\n' + self.date + '\n' + self.line + '\n'
+        self.matter = self.line + '\n' + self.layout + '\n' + self.title + '\n' + self.pub + '\n' + self.date + '\n' + self.line + '\n'
 
     def __init__(self, post_title):
-        self.title = 'title: '
-        self.line = '---'
-        self.pub = 'published: true'
-        self.date = 'date: '
+        self.title  = 'title: '
+        self.line   = '---'
+        self.layout = 'layout: post'
+        self.pub    = 'published: true'
+        self.date   = 'date: '
 
         self.set_title(post_title)
         self.set_date()
