@@ -1,12 +1,17 @@
 import datetime
 
-def make_blog_post(text):
-    text = str(text)
-    title = text[0:text.find('\n')]
-    body = text[text.find('\n'):]
-    matter = str(front_matter(title))
-    post = matter + body
-    return post
+class entry:
+    def make_filename(self):
+        dateStamp = datetime.date.today().strftime('%Y-%m-%d-')
+        self.filename = dateStamp + '.md'
+        
+    def __init__(self, text):
+        text = str(text)
+        self.title = text[0:text.find('\n')]
+        self.body = text[text.find('\n'):]
+        matter = str(front_matter(self.title))
+        self.body = matter + self.body
+        self.make_filename()
 
 class front_matter:
     def set_title(self, post_title):

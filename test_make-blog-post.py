@@ -1,11 +1,12 @@
-import  make_blog_post
+from make_entry import entry
+import unittest
 
-text = '''title des
-        body line1
-        line2
-        line3
-        '''
+testInputText ='''title test entry
+body line1
+body line2
+body line3'''
 
-post = make_blog_post.make_blog_post(text)
+post = entry(testInputText)
 
-print(post)
+print(post.filename)
+print(post.body)
